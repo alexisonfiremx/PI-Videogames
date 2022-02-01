@@ -36,3 +36,44 @@
     transform: rotate(360deg);
   }
 }
+
+.links {
+  padding-left: 100%; 
+  display: flex;
+  text-align: left;
+      
+  }
+  
+  .links:link{
+      text-decoration: none;
+  }
+  
+  .links:visited{
+      text-decoration: none;
+  }
+  
+  .box {
+  background: linear-gradient(180deg, #26ddF2 10%, #152130 101%);
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: white;
+  height: 50px;
+  width: 35%;
+  margin-top: 8%;
+  margin-bottom: 5%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-color: none;
+  border-radius: 5px;
+  border: none;
+  }
+  
+  .box:hover{
+  cursor: pointer;
+  background: #0D141E;
+  transition: all .6s linear;
+  color: white;
+  border: 0.1px solid #8E9097;
+  }

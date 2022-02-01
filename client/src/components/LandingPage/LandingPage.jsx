@@ -1,21 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ButtStyl, H1Styl, H3Styl, LinkHome, Container, Background } from './LandigPage.elements';
+import s from "./LandingPage.module.css";
+// import { ButtStyl, H1Styl, H3Styl, LinkHome, Container, Background } from './LandigPage.elements';
 
 const LandingPage = () => {
     return (
-        <Background>    
-            <Container>
-                <H1Styl>Videogames Database API</H1Styl>
-                <H3Styl>Welcome to the guiding star in your world of gaming. We are gladly sharing over 500,000+ games. Experience what this database API can do!</H3Styl>
+        <div className={s.backgrpund}>
+            <div className={s.container}>
+                <h1 className={s.header}>Videogames Database API</h1>
+                <h3 className={s.paragraph} >Welcome to the guiding star in your world of gaming. We are gladly sharing over 500,000+ games. Experience what this database API can do!</h3>
 
-                <LinkHome to = '/home'>
-                    <ButtStyl>Explore</ButtStyl>
-                </LinkHome>  
+                <Link className={s.links} to = '/home'>
+                    <button className={s.box} >Explore</button>
+                </Link>  
 
-                
-            </Container>
-        </Background>
+
+            </div>
+        </div>
     )
 }
 

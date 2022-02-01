@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
             primaryKey: true
           },
           name: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(100),
             allowNull: false,
           },
           description: {
@@ -19,10 +19,19 @@ module.exports = (sequelize) => {
             allowNull: false,
           },
           released: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING(10),
+            allowNull: false,
+            validate: {
+              isDate: true,
+            }
           },
           rating: {
-            type: DataTypes.DECIMAL(10,1)
+            type: DataTypes.DECIMAL(10,1),
+            allowNull: false,
+            validate: {
+              min: 0,
+              max: 5,
+            }
           },
           createdAtDb: {
             type: DataTypes.BOOLEAN,
@@ -31,7 +40,10 @@ module.exports = (sequelize) => {
           },
           image: {
             type: DataTypes.STRING,
-            
+            allowNull: false,
+            validate:{
+              isUrl: true
+            }
           },
     },
   {

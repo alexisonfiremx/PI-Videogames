@@ -38,7 +38,7 @@ flex-direction: row;
 justify-content: flex-start;
 left: 16%;
 height: 100%;
-width: 86%;
+width: 80%;
 /* border: 2px;
 border: 2px solid lightgray; */
 border-radius: 10px;

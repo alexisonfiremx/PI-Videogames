@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllGames , filterGamesByGenre, filterCreatedOrExist, sortAlphabetically, sortByRating, getAllGenres} from '../../actions';
 import { Link } from 'react-router-dom';
-import Navbar from '../Nav/Navbar';
 import Card from '../Card/Card'
 import Pagination from '../Pagination/Pagination';
 import SearchBar from '../Searchbar/Searchbar';
@@ -53,11 +52,16 @@ export default function Home( ) {
     }
     
     function handleGenreFilter(e){
+        e.target.value === 'All' ?
+        dispatch(getAllGames()) :
+
         dispatch(filterGamesByGenre(e.target.value))
         setCurrentPage(1);
     }
     
     function handlefilterCreatedOrExist(e){
+        e.target.value === "All" ? 
+        dispatch(getAllGames()) :
         dispatch(filterCreatedOrExist(e.target.value))
         setCurrentPage(1);
     }

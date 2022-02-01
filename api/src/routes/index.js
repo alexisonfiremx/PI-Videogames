@@ -15,9 +15,9 @@ const router = Router();
 
 const getAPIinfo = async () => {
     var gets = [1, 2, 3, 4].map (async (e) => await axios.get(`https://api.rawg.io/api/games?key=${apiKey}&page_size=25&page=${e}`))
-    await console.log('------------------------------------------> gets', gets)
+    // await console.log('------------------------------------------> gets', gets)
     let allGets = await Promise.all(gets)
-    await console.log('------------------------------------------> allGets', allGets)
+    // await console.log('------------------------------------------> allGets', allGets)
     let apiURL = allGets.reduce( (prev,curr) => {
             return prev.concat(curr.data.results);
         },[ ]
@@ -35,7 +35,7 @@ const getAPIinfo = async () => {
             }
         })
 
-    console.log('-----------------------------------------------------> apiDATA',apiDATA)
+    // console.log('-----------------------------------------------------> apiDATA',apiDATA)
 
 
 

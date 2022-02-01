@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage.jsx'
 import Home from './components/Home/Home.jsx'
 import VideogameCreate from './components/VideogameCreate/VideogameCreate'
-import Detail from './components/Detail';
+import Detail from './components/Detail/Detail.jsx';
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`

@@ -130,7 +130,9 @@ export default function CreateGame() {
         <div>
             <Container3>
                 <Container4>
-                    <LinkBack to='/home'><BackStyl>⮨</BackStyl></LinkBack>
+                    <LinkBack to='/home'>
+                        <BackStyl>⮨</BackStyl>
+                        </LinkBack>
                 </Container4>
                 <Container4>
             <Header1> Create Video Game</Header1>
@@ -202,6 +204,8 @@ export default function CreateGame() {
                 <SecondaryButton disabled={input.name === '' || errors.name || 
                                             input.description === '' || errors.description ||
                                             input.rating === '' || errors.rating ||
+                                            input.released === '' || errors.released ||
+                                            input.image === '' || errors.image ||
                                             input.genres[0] === '' || errors.genres ||
                                             input.platforms[0] === '' || errors.platforms
                                             } type='submit'>Create Video Game</SecondaryButton>
