@@ -35,7 +35,8 @@ border-top-left-radius: 10px;
 border-bottom-left-radius: 10px;
 border-color: #26ddf2;
 height: 40px;
-margin-top: 0%;
+margin-top: 0.8%;
+margin-left: 1%;
 padding-left: 1.5%;
 
 &:focus {
@@ -63,7 +64,7 @@ border-bottom-right-radius: 10px;
 border-color: #26ddf2;
 height: 42px;
 bottom: 10px;
-margin-top: 0%;
+margin-top: 0.8%;
 
 &:hover{
     cursor:pointer;

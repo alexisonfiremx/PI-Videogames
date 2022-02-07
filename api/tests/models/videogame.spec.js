@@ -60,7 +60,7 @@ describe('Videogame model', () => {
         .catch(() => done());
     });
     it('should work when its a valid image `value`', () => {
-      Videogame.create({ image: 'https://avatars.githubusercontent.com/u/2078339?v=4' });
+      Videogame.create({ image: 'https://i.insider.com/5571adb8eab8eacc63186f29' });
     });
 
   });

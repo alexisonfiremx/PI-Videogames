@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getGameDetail } from "../../actions";
+import { getGameDetail, clearStateDetail } from "../../actions";
+import { FullPageLoader } from "../FullPageLoader/FullPageLoader";
 import { BackStyl, LinkBack, DivBackH1, Header1, SplitScreen, LeftContainer, CardLeft, CardRight, Image, Titles, Subtitles, SplitCard, MiniLeft, MiniRight } from "./Detail.elements";
 
 export default function Detail (props) {
@@ -10,8 +11,13 @@ export default function Detail (props) {
 
     const dispatch = useDispatch();
     useEffect(() => {
+        dispatch(clearStateDetail())
+    }, [dispatch])
+    
+    useEffect(() => {
         dispatch(getGameDetail(props.match.params.id))
     }, [dispatch])
+
 
     const DetailFromState = useSelector(state => state.gameDetail)
     return (
@@ -28,28 +34,38 @@ export default function Detail (props) {
                     </DivBackH1>
                     <SplitScreen>
                         <LeftContainer>
-                        <Image src={DetailFromState[0].image} alt='Not found' width='100%' height='520px'/>
+                            {DetailFromState[0].image ? 
+                            <Image src={DetailFromState[0].image} alt='Not found' width='100%' height='520px'/> :
+                            <Image src='https://cdn.pixabay.com/photo/2021/05/06/14/51/gamepad-6233583_960_720.png' alt='Not found' width='100%' height='520px' />
+                            
+                        }
                         <CardLeft>
                             <SplitCard>
                                 <MiniLeft>
                                     <Titles>Genres: </Titles>
+                                    {DetailFromState[0].genres.length ?
                                     <Subtitles>{ DetailFromState[0].genres[0].name ?
                                             DetailFromState[0].genres.map(el => el.name).join(', ') :
                                             DetailFromState[0].genres.join(',  ') }
-                                    </Subtitles>
+                                    </Subtitles> :
+                                    <Subtitles>No Genres assigned to game</Subtitles>
+                                    
+                                }
                                 </MiniLeft>
                                 <MiniRight>
                                     <Titles>Platforms: </Titles>
+                                    {DetailFromState[0].platforms.length ?
                                     <Subtitles>{ DetailFromState[0].platforms[0].name ?
                                             DetailFromState[0].platforms.map(platforms => platforms.name).join(', ') :
                                             DetailFromState[0].platforms.join(', ') }
-                                    </Subtitles>
+                                    </Subtitles> : <Subtitles>No Platforms registered</Subtitles>
+                                }
                                 </MiniRight>
                             </SplitCard>
                         </CardLeft>
                         </LeftContainer>
                         <CardRight>
-                            <Titles>About game: </Titles>
+                            <Titles>About the game: </Titles>
                             <Subtitles>{DetailFromState[0].description.replace(/<\/?[^>]+>/gi, '').replace(/&#39;/g, "'")}</Subtitles>
                             <SplitCard>
                                 <MiniLeft>
@@ -64,9 +80,10 @@ export default function Detail (props) {
                         </CardRight>
                     </SplitScreen>
 
-                </div> : 
-                <p>Loading...</p>
+                </div> : <FullPageLoader />
+                
             }
+            
         </div>
     )
 }

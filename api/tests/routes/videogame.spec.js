@@ -12,7 +12,7 @@ const videogame = {
   description: 'This was the most popular videogame in 1989',
   released: '01-01-1989',
   rating: 4.5,
-  image: 'https://avatars.githubusercontent.com/u/2078339?v=4',
+  image: 'https://i.insider.com/5571adb8eab8eacc63186f29',
   genres: ['Platformer'],
   platforms: ['NES']
 };
@@ -38,11 +38,11 @@ describe('Videogame routes', () => {
     }));
     it('respondes with games found when game name is passed by query', () =>
     agent.get('/videogames?name=portal').then((res)=> {
-      expect(res.body[0].name).to.equal('Portal 2')
-      expect(res.body[1].name).to.equal('Portal')
+      expect(res.body[0].name).to.equal('Portal')
+      expect(res.body[1].name).to.equal('Portal (1986)')
     }));
     it('respondes with message error if results are not found', () =>
-    agent.get('/videogames?name=invalidName').then((res)=> {
+    agent.get('/videogames?name=xxxxxxxxxxxx').then((res)=> {
       expect(res.text).to.equal('Sorry, game not found')
     }));
   });

@@ -4,6 +4,8 @@ import img from '../../img/CONTROL1.jpg'
 import img2 from '../../img/magnifying-glass.png'
 
 export const BackStyl = styled.button`
+margin-top: 2%;
+margin-left: 2%;
 background: none;
 border: none;
 padding: 0;
@@ -41,14 +43,19 @@ margin-top: 2%;
         }
 `
 
+export const Header = styled.div`
+margin-top: 10%;
+display: inline;
+`
+
 export const Header1 = styled.h1`
-font-size: 40px;
+font-size: 50px;
 font-family: 'Space Grotesk', sans-serif;
 font-weight: bold;
-display: flex;
 justify-content: center;
-margin-top: 1%;
-margin-bottom: 1%;
+margin-top: 15%;
+margin-bottom: 0%;
+display: inline;
 `
 
 export const Form = styled.form`
@@ -65,7 +72,7 @@ align-content: center;
 display: inline-block;
 position: fixed;
 left: 33%;
-
+margin-top: 1%;
 border-bottom-right-radius: 10px;
 border-bottom-left-radius: 10px;
 padding-bottom: 3%;
@@ -277,7 +284,7 @@ export const MiniButton = styled.button`
     border: none;
     margin-left: 5%;
     margin-right: 10%;
-    border-radius: 10%;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -305,7 +312,7 @@ border: 2px solid lightgray; */
 display: flex ;
 position: fixed;
 left: 66%;
-top: 40%; 
+top: 48%; 
 background-image: url(${img});
 background-size: cover;
 height: 400px;

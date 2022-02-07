@@ -9,6 +9,8 @@ export const GET_ALL_GENRES = 'GET_ALL_GENRES';
 export const GET_ALL_PLATFORMS = 'GET_ALL_PLATFORMS';
 export const GET_GAME_DETAIL = 'GET_GAME_DETAIL';
 export const POST_GAME = 'POST_GAME';
+export const CLEAR_STATE_DETAIL = 'CLEAR_STATE_DETAIL';
+export const CLEAR_STATE_VIDEOGAMES = 'CLEAR_STATE_VIDEOGAMES';
 
 export function getAllGames() {
     try {
@@ -24,19 +26,43 @@ export function getAllGames() {
     }
 } 
 
-export function getGamesByName(name) {
-    try {
-        return async function(dispatch) {
-            var json = await axios(`http://localhost:3001/videogames?name=${name}`)
-            return dispatch ({
+// export function getGamesByName(name) {
+//     try {
+//         return async function(dispatch) {
+//             var json = await axios(`http://localhost:3001/videogames?name=${name}`)
+//             return dispatch ({
+//                 type: GET_GAMES_BY_NAME,
+//                 payload: json.data
+//             })
+//         }
+//     } catch (error) {
+//         console.log(error)
+//         return dispatch ({
+//             type: GET_GAMES_BY_NAME,
+//             payload: [{msg: 'Did not find any results'}]
+//         })
+//     }
+// }
+
+
+export const getGamesByName = (name) => {
+    return async function (dispatch) {
+        try {
+            let json = await axios(`http://localhost:3001/videogames?name=${name}`)
+            return dispatch({
+            type: GET_GAMES_BY_NAME,
+            payload: json.data
+        })
+        } catch (error) {
+            console.log(error)
+            return dispatch({
                 type: GET_GAMES_BY_NAME,
-                payload: json.data
+                payload: [{msg: "Did not found any games"}]
             })
-        }
-    } catch (error) {
-        console.log(error)
-    }
+        } 
+    } 
 }
+
 
 export function getGameDetail(id) {
     try {
@@ -52,14 +78,31 @@ export function getGameDetail(id) {
     }
 }
 
+// export function getAllGenres () {
+//     try {
+//         return async function(dispatch) {
+//             var json = await axios(`http://localhost:3001/genres`)
+//             console.log(json)
+//             return dispatch ({
+//                 type: GET_ALL_GENRES,
+//                 payload: json.data
+//             })
+//         }
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+
 export function getAllGenres () {
     try {
-        return async function(dispatch) {
-            var json = await axios(`http://localhost:3001/genres`)
-            console.log(json)
-            return dispatch ({
-                type: GET_ALL_GENRES,
-                payload: json.data
+        return function(dispatch) {
+            return fetch(`http://localhost:3001/genres`)
+            .then(response => response.json())
+            .then (json =>{
+                dispatch({
+                    type: GET_ALL_GENRES,
+                    payload: json
+                })
             })
         }
     } catch (error) {
@@ -67,20 +110,25 @@ export function getAllGenres () {
     }
 }
 
+
+
 export function getAllPlatforms() {
     try {
-        return async function(dispatch) {
-            var json = await axios(`http://localhost:3001/platforms`)
-            console.log(json)
-            return dispatch ({
-                type: GET_ALL_PLATFORMS,
-                payload: json.data
+        return function(dispatch) {
+            return fetch(`http://localhost:3001/platforms`)
+            .then(response => response.json())
+            .then(json => {
+                dispatch({
+                    type: GET_ALL_PLATFORMS,
+                    payload: json
+                })
             })
         }
     } catch (error) {
         console.log(error)
     }
 }
+
 
 
 export function postNewGame (payload) {
@@ -115,6 +163,20 @@ export function sortAlphabetically(payload) {
 export function sortByRating(payload) {
     return {
         type: SORT_BY_RATING,
+        payload
+    }
+}
+
+export function clearStateDetail(payload) {
+    return {
+        type: CLEAR_STATE_DETAIL,
+        payload
+    }
+}
+
+export function clearStateVideogames(payload) {
+    return {
+        type: CLEAR_STATE_VIDEOGAMES,
         payload
     }
 }

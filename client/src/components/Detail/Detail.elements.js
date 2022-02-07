@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const BackStyl = styled.button`
+margin-top: 2%;
 background: none;
 border: none;
 padding: 0;
@@ -55,7 +56,7 @@ font-family: 'Space Grotesk', sans-serif;
 font-weight: bold;
 display: flex;
 justify-content: center;
-margin-top: 1%;
+margin-top: 3%;
 margin-left: 5%;
 margin-bottom: 1%;
 `

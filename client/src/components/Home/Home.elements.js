@@ -40,10 +40,15 @@ left: 16%;
 height: 100%;
 width: 80%;
 /* border: 2px;
-border: 2px solid lightgray; */
-border-radius: 10px;
+border: 2px solid lightgray;
+border-radius: 10px; */
 margin-left: 20px;
 margin-bottom: 20px;
+`
+
+export const ContainerLoader = styled.div`
+width: 90%;
+margin-top: 7%;
 `
 
 export const SelectorSty = styled.select`
@@ -89,7 +94,7 @@ color: #8E9097;
 `
 
 export const H1Styl = styled.h1`
-font-size: 80px;
+font-size: 60px;
 font-family: 'Space Grotesk', sans-serif;
 font-weight: bold;
 display: flex;

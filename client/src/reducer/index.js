@@ -5,10 +5,11 @@ import {
         SORT_ALPHABETICALLY,
         SORT_BY_RATING,
         GET_GAMES_BY_NAME,
-        POST_GAME,
         GET_ALL_GENRES,
         GET_ALL_PLATFORMS,
-        GET_GAME_DETAIL
+        GET_GAME_DETAIL,
+        CLEAR_STATE_DETAIL,
+        CLEAR_STATE_VIDEOGAMES,
 } from "../actions";
 
 const initalState = {
@@ -44,15 +45,25 @@ const rootReducer = (state = initalState, action) => {
                 ...state,
                 platforms: action.payload
             }
+        case CLEAR_STATE_DETAIL:
+            return {
+                ...state,
+                gameDetail: []
+            }
+        case CLEAR_STATE_VIDEOGAMES:
+            return {
+                ...state,
+                videogames: []
+            }
         case GET_GAMES_BY_NAME :
             return {
                 ...state,
                 videogames: action.payload
             }
-        case POST_GAME:
-            return {
-                ...state
-            }
+        // case POST_GAME:
+        //     return {
+        //         ...state
+        //     }
         case FILTER_GAMES_BY_GENRE :
             const allGames = state.allTheGames
             const gamesAPI = allGames.filter(el => el.genres.includes(action.payload))
@@ -72,13 +83,21 @@ const rootReducer = (state = initalState, action) => {
 
         
         case FILTER_CREATED_OR_EXIST :
-            const createdOrExistFilter = action.payload === 'created' ? state.allTheGames.filter(el => el.createdAtDb) : state.allTheGames.filter(el => !el.createdAtDb)
+            // const createdOrExistFilter = action.payload === 'DB' ? state.allTheGames.filter(el => el.createdAtDb) : state.allTheGames.filter(el => !el.createdAtDb)
+            var auxiliar;
+            if(action.payload === 'DB') {
+                auxiliar = state.allTheGames.filter(el => el.createdAtDb)
+                if(!auxiliar.length) auxiliar = [{dbError: 'No video games found'}]
+            }else{
+                auxiliar = state.allTheGames.filter(el => !el.createdAtDb)
+            }
+
             return {
                 ...state,
-                videogames: createdOrExistFilter
+                videogames: auxiliar
             }
         case SORT_ALPHABETICALLY :
-            let sorted = action.payload === 'a-z' ?
+            let sorted = action.payload === 'A - Z' ?
             state.videogames.sort(( el1, el2 ) => {
                 if(el1.name > el2.name) {
                     return 1;
@@ -102,7 +121,7 @@ const rootReducer = (state = initalState, action) => {
                 videogames: sorted
             }
         case SORT_BY_RATING :
-            let sorted2 = action.payload === 'asc' ?
+            let sorted2 = action.payload === 'Lowest to Highest Rating' ?
             state.videogames.sort(( el1, el2 ) => {
                 if(el1.rating > el2.rating) {
                     return 1;

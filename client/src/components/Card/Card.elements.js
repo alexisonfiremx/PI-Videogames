@@ -31,6 +31,7 @@ margin-bottom: 0px;
 
 export const H2Sty = styled.h2`
 text-transform: uppercase;
+font-size: 2.5vh;
 margin-top: 6px;
 margin-bottom: 6px;
 margin-left: 10px;

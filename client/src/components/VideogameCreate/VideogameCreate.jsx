@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllGenres, postNewGame, getAllPlatforms } from "../../actions";
-import { BackStyl, LinkBack, Header1, Form, LabelStyle, InputForm, InputDesc, SelectorForm, InputShort, ContainerofTwo, ContainerofOne, SecondaryButton, Container3, Container4, Container5, Container6, MiniButton, AlertStyl, BackgroundImg } from './VideogameCreate.elements'
+import { BackStyl, LinkBack, Header1, Form, LabelStyle, InputForm, InputDesc, SelectorForm, InputShort, ContainerofTwo, ContainerofOne, SecondaryButton, Container3, Container4, Container5, Container6, MiniButton, AlertStyl, BackgroundImg, Header } from './VideogameCreate.elements'
 
 
 const isValidUrl = (url) => {
@@ -34,7 +34,9 @@ function validateInput(input) {
     }
     if(!input.released) {
         errors.released = "Date of release is required"
-    } if(!input.image) {
+    }else if(input.released.length < 10) {
+        errors.released = "Date of release is to long"
+    }if(!input.image) {
         errors.image = "Image URL is required"
     } else if (!isValidUrl(input.image)){
         errors.image = "Not validated as URL"
@@ -93,6 +95,11 @@ export default function CreateGame() {
             ...input,
             [e.target.name]: [...input[e.target.name], e.target.value ]
         })
+        setErrors(validateInput({
+            ...input,
+            [e.target.name] : e.target.value
+        }));
+
     }
 
     function handleSubmit(e) {
@@ -135,7 +142,9 @@ export default function CreateGame() {
                         </LinkBack>
                 </Container4>
                 <Container4>
-            <Header1> Create Video Game</Header1>
+                    <Header>
+                        <Header1> Create </Header1><div className="gradient2">New </div><Header1> Video Game</Header1>
+                    </Header>
                 </Container4>
             </Container3>
             <Container3>

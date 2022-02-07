@@ -37,43 +37,131 @@
   }
 }
 
-.links {
-  padding-left: 100%; 
+/* Start for styles for Page Loader */
+
+.container {
   display: flex;
-  text-align: left;
-      
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: scale 2s infinite cubic-bezier(0, 0, 0.49, 1.02);
+}
+
+.circle-1 {
+  background-color: #49b8e5;
+}
+
+.circle-1:before {
+  background-color: #49b8e5;
+  animation-delay: 200ms;
+}
+
+.circle-2 {
+  background-color: #1e98d4;
+}
+
+.circle-2:before {
+  background-color: #1e98d4;
+  animation-delay: 400ms;
+}
+
+.circle-3 {
+  background-color: #2a92d0;
+}
+
+.circle-3:before {
+  background-color: #2a92d0;
+  animation-delay: 600ms;
+}
+
+.circle-4 {
+  background-color: #3a88c8;
+}
+
+.circle-4:before {
+  background-color: #3a88c8;
+  animation-delay: 800ms;
+}
+
+.circle-5 {
+  background-color: #507cbe;
+}
+
+.circle-5:before {
+  background-color: #507cbe;
+  animation-delay: 1000ms;
+}
+
+@keyframes scale {
+  0% {
+      transform: scale(1);
   }
-  
-  .links:link{
-      text-decoration: none;
+
+  50%,
+  75% {
+      transform: scale(2.5);
   }
-  
-  .links:visited{
-      text-decoration: none;
+
+  78%,
+  100% {
+      opacity: 0;
   }
-  
-  .box {
-  background: linear-gradient(180deg, #26ddF2 10%, #152130 101%);
-  font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* End of styles for page loader */
+
+.containerHome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  overflow: hidden;
+}
+
+
+.gradient {
+background-image: linear-gradient(rgb(255, 28, 247) 25%, rgb(178, 73, 248) 100%);
+background-clip: text;
+color: transparent;
+display: inline;
+font-size: 270px;
+font-weight: bold;
+text-align: center;
+justify-content: center;
+margin-bottom: 1%;
+display: inline;
+
+}
+
+.gradient2 {
+  background-image: linear-gradient(rgb(255, 28, 247) 25%, rgb(178, 73, 248) 100%);
+  background-clip: text;
+  color: transparent;
+  display: inline;
+  font-size: 50px;
   font-weight: bold;
-  font-size: 20px;
-  text-transform: uppercase;
-  color: white;
-  height: 50px;
-  width: 35%;
-  margin-top: 8%;
-  margin-bottom: 5%;
-  padding-left: 3%;
-  padding-right: 3%;
-  border-color: none;
-  border-radius: 5px;
-  border: none;
-  }
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 1%;
+  display: inline;
   
-  .box:hover{
-  cursor: pointer;
-  background: #0D141E;
-  transition: all .6s linear;
-  color: white;
-  border: 0.1px solid #8E9097;
   }
