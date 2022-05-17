@@ -2,9 +2,9 @@
 <div align="center">
   <img alt="Logo" src="https://res.cloudinary.com/djbiam1gm/image/upload/v1652810085/VG%20PI/Infinite_VG.png" />
 </div>
-<h3 align="center">
-  infinitevg.marcosheag.com
-</h3>
+<h2 align="center">
+  <a href="https://infinitevg.marcosheag.com/" target="_blank">infinitevg.marcosheag.com</a>
+</h2>
 
 # Individual Project - Infinite Video Games App 🎮
 
